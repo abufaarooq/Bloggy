@@ -2,6 +2,10 @@ const express = require('express')
 
 const articleRouter = require('./routes/articles')
 
+const mongoose = require('mongoose')
+
+mongoose.connect('mongodb://localhost/bloggy')
+
 const app = express()
 
 app.set('view engine','ejs')
