@@ -11,12 +11,12 @@
     <h1 class="mb-4 mt-5">Articles</h1>
     <a href = "/articles/new" class="btn btn-primary mb-4">New Post</a>
 
-    <% articles.forEach(article => { %>
+    <% articles.forEach(articles => { %>
         <div class = "card mb-2">
         <div class = "card-body mb-2">
-        <div class = "card-title mb-2"><%= article.title %></div>
-        <div class = "card-subtitle mb-2 text-muted"><%= article.timeCreated.toLocaleDateString()%></div>
-        <div class = "card-text mb-2"><%= article.description %>
+        <div class = "card-title mb-2"><%= articles.body.title %></div>
+        <div class = "card-subtitle mb-2 text-muted"><%= articles.body.timeCreated.toLocaleDateString()%></div>
+        <div class = "card-text mb-2"><%= articles.body.description %>
     <% }) %>
 </div>
 </body>

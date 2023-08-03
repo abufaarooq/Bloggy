@@ -1,25 +1,24 @@
 const express = require('express')
 
-const articleRouter = require('./routes/articles')
+const bodyParser = require('body-parser')
 
-const mongoose = require('mongoose')
-
-mongoose.connect('mongodb://localhost/bloggy')
 
 const app = express()
 
+app.use(bodyParser.json());
+
+
+const mongoose = require('mongoose')
+
+mongoose.connect('mongodb://localhost:27017/bloggy', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+})
+
+const articleRouter = require('./routes/api')
+
 app.set('view engine','ejs')
 
-app.use('/articles', articleRouter)
-
-
-app.get('/', (req, res) => { 
-    const article = [{
-        title: 'Test Article',
-        timeCreated: new Date(),
-        description: 'Test Description'
-    }]
-    res.render("articles/index.ejs", {articles: article})
-})
+app.use('/api', articleRouter)
 
 app.listen(5000)
